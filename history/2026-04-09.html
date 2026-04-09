@@ -14,43 +14,51 @@
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #7dd3fc;
-      --card: rgba(30, 41, 59, .7);
+      --card: rgba(30, 41, 59, .72);
+      --card-2: rgba(15, 23, 42, .55);
       --shadow: 0 24px 80px rgba(15, 23, 42, .35);
+      --good: #86efac;
+      --warn: #fbbf24;
+      --soft: #dbeafe;
     }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top, rgba(37, 99, 235, .18), transparent 32%), linear-gradient(180deg, #050816 0%, var(--bg) 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-    .wrap { max-width: 920px; margin: 0 auto; padding: 24px 16px 48px; }
-    .hero {
-      background: var(--panel);
-      border: 1px solid var(--panel-border);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-    }
+    body { margin: 0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: radial-gradient(circle at top, rgba(37, 99, 235, .18), transparent 32%), linear-gradient(180deg, #050816 0%, var(--bg) 100%); color: var(--text); min-height: 100vh; }
+    a { color: #93c5fd; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 24px 16px 48px; }
+    .hero { background: var(--panel); border: 1px solid var(--panel-border); border-radius: 24px; padding: 24px; box-shadow: var(--shadow); backdrop-filter: blur(18px); }
     .kicker { text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; color: var(--accent); font-weight: 700; }
     h1 { margin: 10px 0 8px; font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.02; }
-    .subtitle { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.55; max-width: 62ch; }
+    .subtitle { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.55; max-width: 72ch; }
     .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; color: var(--muted); font-size: .92rem; }
     .pill { border: 1px solid var(--panel-border); border-radius: 999px; padding: 8px 12px; background: rgba(15, 23, 42, .35); }
-    .grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 16px; margin-top: 18px; }
+    .grid { display: grid; grid-template-columns: minmax(0,1fr) 310px; gap: 16px; margin-top: 18px; align-items: start; }
+    .stack { display: grid; gap: 16px; }
     .card { background: var(--card); border: 1px solid var(--panel-border); border-radius: 20px; padding: 18px; }
     h2 { margin: 0 0 12px; font-size: 1.15rem; }
+    h3 { margin: 0 0 8px; font-size: 1rem; }
     .content { line-height: 1.72; color: #e5eefb; }
     .content img { max-width: 100%; border-radius: 16px; }
-    .content a { color: #93c5fd; }
     .list { display: grid; gap: 10px; }
-    .history-item { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 14px; border-radius: 14px; background: rgba(15, 23, 42, .4); border: 1px solid rgba(148, 163, 184, .12); }
+    .history-item, .zone-card { padding: 12px 14px; border-radius: 14px; background: rgba(15, 23, 42, .4); border: 1px solid rgba(148, 163, 184, .12); }
+    .zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .zone-card strong { display: block; margin-bottom: 6px; }
+    .zone-card small { color: var(--muted); display: block; line-height: 1.5; }
+    .listing-grid { display: grid; gap: 14px; }
+    .listing { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 14px; padding: 14px; border-radius: 18px; background: var(--card-2); border: 1px solid rgba(148, 163, 184, .14); }
+    .thumb { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; background: rgba(148,163,184,.12); }
+    .thumb.placeholder { display: grid; place-items: center; color: var(--muted); font-size: .88rem; }
+    .listing-head { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom: 8px; }
+    .badge { display:inline-flex; align-items:center; gap:6px; border-radius:999px; padding:4px 10px; font-size:.78rem; background: rgba(37,99,235,.14); border:1px solid rgba(147,197,253,.2); color: var(--soft); }
+    .score.good { color: var(--good); }
+    .score.warn { color: var(--warn); }
+    .detail-list { display:flex; flex-wrap:wrap; gap:8px; margin: 8px 0; }
+    .detail { border-radius:999px; padding:5px 10px; font-size:.8rem; background: rgba(15,23,42,.45); border:1px solid rgba(148,163,184,.12); color: var(--soft); }
+    .muted { color: var(--muted); }
+    .footer { margin-top: 14px; color: var(--muted); font-size: .9rem; text-align: center; }
     .history-item a { color: var(--text); text-decoration: none; font-weight: 600; }
     .history-item small { color: var(--muted); }
-    .footer { margin-top: 14px; color: var(--muted); font-size: .9rem; text-align: center; }
-    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } .hero { padding: 18px; } .history-item { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 920px) { .grid { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .listing { grid-template-columns: 1fr; } .hero { padding: 18px; } }
   </style>
 </head>
 <body>
@@ -59,110 +67,101 @@
       <div class="kicker">Clío · Inmo</div>
       <h1>Clío · Inmo — 2026-04-09</h1>
       <p class="subtitle">HTML diario para Clío - Inmo, con portada latest y archivo histórico por fecha.</p>
-      <div class="meta"><span class="pill">Fecha: 2026-04-09</span><span class="pill">Fuente: /home/oc/.openclaw/workspace/dailyhtml/daily</span><span class="pill">Última actualización: 2026-04-09T21:11:09+00:00</span></div>
+      <div class="meta"><span class="pill">Fecha: 2026-04-09</span><span class="pill">Fuente: /home/oc/.openclaw/workspace/dailyhtml/daily</span><span class="pill">Última actualización: 2026-04-09T22:17:46+00:00</span></div>
     </section>
     <section class="grid">
-      <article class="card">
-        <h2>Latest</h2>
-        <div class="content"><h1>Resumen diario inmobiliario — 2026-04-09</h1>
-<br>
-<h2>Resumen corto</h2>
-<ul>
-<li>Señales candidatas detectadas: 43</li>
-<li>Novedades frente al corte anterior: 0</li>
-<li>Fuente más prometedora hoy: Inmobiliaria Vissta</li>
-</ul>
-<br>
-<h2>Propiedades nuevas encontradas</h2>
-<ul>
-<li>No detecto novedades claras frente al último corte disponible; hoy pesa más la vigilancia y la priorización que el hallazgo nuevo.</li>
-</ul>
-<h2>Mejores candidatos del día</h2>
-<ul>
-<li>1. casa-adosada-en-aoiz-con-vistas-es1701784.html</li>
-</ul>
-<p>  - fuente: Inmobiliaria Vissta</p>
-<p>  - tipo: listing-url</p>
-<p>  - encaje: muy alto (16)</p>
-<p>  - lectura: cae en uno de los alrededores de Pamplona que quieres para casa; la tipología cuadra con casa adosada/pareada/independiente</p>
-<ul>
-<li>2. casa-adosada-en-fitero-con-vistas-es1721344.html</li>
-</ul>
-<p>  - fuente: Inmobiliaria Vissta</p>
-<p>  - tipo: listing-url</p>
-<p>  - encaje: muy alto (16)</p>
-<p>  - lectura: cae en uno de los alrededores de Pamplona que quieres para casa; la tipología cuadra con casa adosada/pareada/independiente</p>
-<ul>
-<li>3. AEDAS Homes — señal general de promotora</li>
-</ul>
-<p>  - fuente: AEDAS Homes</p>
-<p>  - tipo: promoter-signal</p>
-<p>  - encaje: muy alto (16)</p>
-<p>  - lectura: apunta a Soto Lezkairu, una de tus microzonas prioritarias; toca obra nueva, que para Pamplona tiene prioridad; entra en la zona de playa objetivo</p>
-<ul>
-<li>4. casa-chalet-en-auritzburguete-con-vistas-es1683758.html</li>
-</ul>
-<p>  - fuente: Inmobiliaria Vissta</p>
-<p>  - tipo: listing-url</p>
-<p>  - encaje: muy alto (15)</p>
-<p>  - lectura: cae en uno de los alrededores de Pamplona que quieres para casa; la tipología cuadra con casa adosada/pareada/independiente</p>
-<ul>
-<li>5. piso-en-pamplona-iturrama-con-ascensor-es746209.html</li>
-</ul>
-<p>  - fuente: Inmobiliaria Vissta</p>
-<p>  - tipo: listing-url</p>
-<p>  - encaje: muy alto (13)</p>
-<p>  - lectura: cae en uno de los alrededores de Pamplona que quieres para casa</p>
-<ul>
-<li>6. piso-en-pamplona-con-ascensor-es1071223.html</li>
-</ul>
-<p>  - fuente: Inmobiliaria Vissta</p>
-<p>  - tipo: listing-url</p>
-<p>  - encaje: muy alto (13)</p>
-<p>  - lectura: cae en uno de los alrededores de Pamplona que quieres para casa</p>
-<ul>
-<li>7. piso-en-pamplona-con-ascensor-es1217129.html</li>
-</ul>
-<p>  - fuente: Inmobiliaria Vissta</p>
-<p>  - tipo: listing-url</p>
-<p>  - encaje: muy alto (13)</p>
-<p>  - lectura: cae en uno de los alrededores de Pamplona que quieres para casa</p>
-<ul>
-<li>8. piso-en-pamplona-con-ascensor-es1615657.html</li>
-</ul>
-<p>  - fuente: Inmobiliaria Vissta</p>
-<p>  - tipo: listing-url</p>
-<p>  - encaje: muy alto (13)</p>
-<p>  - lectura: cae en uno de los alrededores de Pamplona que quieres para casa</p>
-<ul>
-<li>9. piso-en-fitero-con-vistas-es1690407.html</li>
-</ul>
-<p>  - fuente: Inmobiliaria Vissta</p>
-<p>  - tipo: listing-url</p>
-<p>  - encaje: muy alto (13)</p>
-<p>  - lectura: cae en uno de los alrededores de Pamplona que quieres para casa</p>
-<ul>
-<li>10. piso-en-pamplona-con-ascensor-es1692095.html</li>
-</ul>
-<p>  - fuente: Inmobiliaria Vissta</p>
-<p>  - tipo: listing-url</p>
-<p>  - encaje: muy alto (13)</p>
-<p>  - lectura: cae en uno de los alrededores de Pamplona que quieres para casa</p>
-<br>
-<h2>Lectura útil</h2>
-<ul>
-<li>Lo más interesante hoy viene de Inmobiliaria Vissta, porque concentra las mejores señales de zona/tipología.</li>
-<li>El resumen todavía funciona como radar inicial: ya explica por qué algo encaja, pero aún no extrae ficha completa del inmueble.</li>
-<li>Siguiente mejora natural: bajar a ficha concreta de inmueble con precio, metros, habitaciones y fecha real de alta, para distinguir mejor “novedad real” de simple URL histórica.</li>
-</ul></div>
-      </article>
+      <div class="stack"><section class="card"><h2>Radar de hoy</h2><div class="content"><p><strong>6</strong> candidatos útiles tras filtrar ruido, <strong>1</strong> novedades vs. el corte previo.</p><p class="muted">Ahora el ranking ya excluye alquileres, locales/oficinas/naves y páginas de categoría para que el top refleje mejor encaje real con los criterios.</p></div></section><section class="card"><h2>Zonas objetivo</h2><div class="zone-grid"><div class="zone-card"><strong>Pamplona ciudad</strong><small>Piso en Pamplona, preferiblemente obra nueva, idealmente 4 hab en Soto Lezkairu o centro.</small><p>6 señales útiles. Mejor pista: New homes for sale in Pamplona | AEDAS Homes.</p></div><div class="zone-card"><strong>Alrededores de Pamplona</strong><small>Casa adosada, pareada o independiente en Cizur, Beloso o Gorraiz.</small><p>Sin señal sólida hoy; mantener radar.</p></div><div class="zone-card"><strong>Panticosa</strong><small>Apartamento de 2 habitaciones.</small><p>1 señales útiles. Mejor pista: Pisos en Panticosa, Huesca - pisos.com.</p></div><div class="zone-card"><strong>Playa (Cambrils / La Pineda)</strong><small>Bajo o ático, 2 habitaciones, urbanización con piscina.</small><p>Sin señal sólida hoy; mantener radar.</p></div></div></section><section class="card"><h2>Mejores candidatos</h2><div class="listing-grid"><article class="listing">
+      <div><div class="thumb placeholder">sin foto fiable</div></div>
+      <div>
+        <div class="listing-head">
+          <span class="badge">AEDAS Homes</span>
+          <span class="badge score good">alto · 10</span>
+          <span class="badge">pamplonaCity</span>
+        </div>
+        <h3>New homes for sale in Pamplona | AEDAS Homes</h3>
+        <p><strong><a href="https://www.aedashomes.com/viviendas-obra-nueva-pamplona" target="_blank" rel="noopener noreferrer">abrir anuncio ↗</a></strong></p>
+        <div class="detail-list"><span class="detail">pamplona</span><span class="detail">obra nueva</span></div>
+        <p>Discover the new homes that we offer for sale in Pamplona. Sustainable designer dwellings. The perfect place to fill with stories. Your stories.</p>
+        <p class="muted">suma obra nueva</p>
+      </div>
+    </article><article class="listing">
+      <div><img class="thumb" src="https://inmobiliaria.acciona.com/media/1371193/acciona_oglogo.jpg" alt="thumbnail de Promotora Pamplona. Promociones de obra nueva de viviendas" loading="lazy"></div>
+      <div>
+        <div class="listing-head">
+          <span class="badge">ACCIONA Living &amp;amp; Culture</span>
+          <span class="badge score good">alto · 10</span>
+          <span class="badge">pamplonaCity</span>
+        </div>
+        <h3>Promotora Pamplona. Promociones de obra nueva de viviendas</h3>
+        <p><strong><a href="https://inmobiliaria.acciona.com/promociones-viviendas/pamplona/" target="_blank" rel="noopener noreferrer">abrir anuncio ↗</a></strong></p>
+        <div class="detail-list"><span class="detail">pamplona</span><span class="detail">obra nueva</span></div>
+        <p>Promociones de obra nueva en Pamplona, con un diseño vanguardista y acabados de primera calidad de Acciona, promotora inmobiliaria de viviendas</p>
+        <p class="muted">suma obra nueva</p>
+      </div>
+    </article><article class="listing">
+      <div><img class="thumb" src="https://storage.googleapis.com/static.inmoweb.es/clients/1753/property/1071223/image/thumb/585_335/b0109157-df56-424f-980e-61b421886b11.jpg?20260120100400753" alt="thumbnail de Venta Piso en Pamplona con Ascensor" loading="lazy"></div>
+      <div>
+        <div class="listing-head">
+          <span class="badge">Inmobiliaria Vissta</span>
+          <span class="badge score warn">medio · 9</span>
+          <span class="badge">pamplonaCity</span>
+        </div>
+        <h3>Venta Piso en Pamplona con Ascensor</h3>
+        <p><strong><a href="https://www.inmobiliariavissta.com/piso-en-pamplona-con-ascensor-es1071223.html" target="_blank" rel="noopener noreferrer">abrir anuncio ↗</a></strong></p>
+        <div class="detail-list"><span class="detail">venta</span><span class="detail">piso</span><span class="detail">pamplona, milagrosa, azpilagana, azpilagaña</span><span class="detail">289.000 €</span><span class="detail">Segunda mano</span></div>
+        <p>Inmobiliaria Vissta ofrece en exclusiva esta oportunidad ubicada en la zona limítrofe entre Azpilagaña y La Milagrosa junto a la Avenida Zaragoza de Pamplona. Ideal tanto para inversores, con posibilidad de</p>
+        <p class="muted">encaje parcial</p>
+      </div>
+    </article><article class="listing">
+      <div><img class="thumb" src="https://storage.googleapis.com/static.inmoweb.es/clients/1753/property/1721343/image/thumb/585_335/9487f0d8-40d7-4b88-8417-980f6449a3a7.jpg" alt="thumbnail de Venta Piso en Pamplona con Ascensor" loading="lazy"></div>
+      <div>
+        <div class="listing-head">
+          <span class="badge">Inmobiliaria Vissta</span>
+          <span class="badge score warn">medio · 9</span>
+          <span class="badge">pamplonaCity</span>
+        </div>
+        <h3>Venta Piso en Pamplona con Ascensor</h3>
+        <p><strong><a href="https://www.inmobiliariavissta.com/piso-en-pamplona-con-ascensor-es1721343.html" target="_blank" rel="noopener noreferrer">abrir anuncio ↗</a></strong></p>
+        <div class="detail-list"><span class="detail">venta</span><span class="detail">piso</span><span class="detail">pamplona, echavacoiz, barañain</span><span class="detail">195.000 €</span><span class="detail">Segunda mano</span></div>
+        <p>Inmobiliaria Vissta ofrece en venta este magnífico piso exterior en Echavacoiz, junto a la Venta Andrés y a un paso de Barañáin, en una ubicación tranquila y bien comunicada. Se trata</p>
+        <p class="muted">encaje parcial</p>
+      </div>
+    </article><article class="listing">
+      <div><div class="thumb placeholder">sin foto fiable</div></div>
+      <div>
+        <div class="listing-head">
+          <span class="badge">CIDENAR</span>
+          <span class="badge score warn">medio · 6</span>
+          <span class="badge">pamplonaCity</span>
+        </div>
+        <h3>Impulso a la vivienda en el Casco Antiguo de Pamplona</h3>
+        <p><strong><a href="https://cidenar.com/impulso-a-la-vivienda-en-el-casco-antiguo-de-pamplona/" target="_blank" rel="noopener noreferrer">abrir anuncio ↗</a></strong></p>
+        <div class="detail-list"></div>
+        <p></p>
+        <p class="muted">encaja con Pamplona centro; penalizado por señal editorial / no ficha</p>
+      </div>
+    </article><article class="listing">
+      <div><div class="thumb placeholder">sin foto fiable</div></div>
+      <div>
+        <div class="listing-head">
+          <span class="badge">Panticosa radar</span>
+          <span class="badge score warn">medio · 5</span>
+          <span class="badge">panticosa</span><span class="badge">pamplonaCity</span>
+        </div>
+        <h3>Pisos en Panticosa, Huesca - pisos.com</h3>
+        <p><strong><a href="https://www.pisos.com/venta/pisos-panticosa/" target="_blank" rel="noopener noreferrer">abrir anuncio ↗</a></strong></p>
+        <div class="detail-list"><span class="detail">panticosa</span><span class="detail">obra nueva</span></div>
+        <p>3 casas y pisos en venta en Panticosa, Huesca. Oferta de profesionales y particulares desde 230.000 €. Disponemos de casas, chalets, dúplex, áticos y pisos en venta en Panticosa, Huesca. ¡Un piso increíble está esperándo</p>
+        <p class="muted">suma obra nueva; entra en la zona de montaña objetivo; penalizado por página genérica</p>
+      </div>
+    </article></div></section></div>
       <aside class="card">
         <h2>Histórico</h2>
         <div class="list"><div class="history-item"><a href="history/2026-04-09.html">2026-04-09</a><small>ver</small></div>
 <div class="history-item"><a href="history/2026-04-08.html">2026-04-08</a><small>ver</small></div></div>
       </aside>
     </section>
-    <div class="footer">Generado automáticamente · 2026-04-09T21:11:09+00:00</div>
+    <div class="footer">Generado automáticamente · 2026-04-09T22:17:46+00:00</div>
   </main>
 </body>
 </html>
